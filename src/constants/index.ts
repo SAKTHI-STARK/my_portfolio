@@ -44,7 +44,11 @@ export const NAV_LINKS = [
     title: "Work",
     link: null,
   },
-  
+  {
+    id: "project",
+    title: "projects",
+    link: null,
+  },
    {
     id: "contact",
     title: "Contact",
