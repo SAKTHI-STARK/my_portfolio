@@ -12,6 +12,34 @@ export default {
         "black-200": "#090325",
         "white-100": "#f3f3f3",
       },
+      animation: {
+        typewriter: 'typewriter 2s steps(11) forwards',
+        caret: 'typewriter 2s steps(11) forwards, blink 1s steps(11) infinite 2s',
+      },
+      keyframes: {
+        typewriter: {
+          to: {
+            left: '100%',
+          },
+        },
+        blink: {
+          '0%': {
+            opacity: '0',
+          },
+          '0.1%': {
+            opacity: '1',
+          },
+          '50%': {
+            opacity: '1',
+          },
+          '50.1%': {
+            opacity: '0',
+          },
+          '100%': {
+            opacity: '0',
+          },
+        },
+      },
       boxShadow: {
         card: "0px 35px 120px -15px #211e35",
       },
@@ -25,3 +53,4 @@ export default {
   },
   plugins: [],
 };
+
