@@ -29,7 +29,7 @@ import project3 from "./projects/project3.png";
 import project5 from "./projects/project5.png";
 import project6 from "./projects/project6.png";
 
-import purie from "./Purie.jpg";
+import purie from "./purie.png";
 import raj from "./Raj.png";
 
 
