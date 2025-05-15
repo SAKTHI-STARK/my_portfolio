@@ -45,8 +45,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "check-types": "tsc --noEmit",
-  "export": "vite export",
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
