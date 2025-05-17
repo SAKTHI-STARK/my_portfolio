@@ -74,11 +74,13 @@ const ProjectCard = ({
   );
 
   if (isMobile) {
-    // No Tilt on mobile, just render the static content
-    return <div className="bg-tertiary p-5 rounded-2xl w-full">{CardContent}</div>;
+    return (
+      <div className="bg-tertiary p-5 rounded-2xl w-full">
+        {CardContent}
+      </div>
+    );
   }
 
-  // Render Tilt on larger screens
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
@@ -96,33 +98,64 @@ const ProjectCard = ({
 };
 
 export const Works = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => setIsMobile(window.innerWidth <= 768);
+    if (typeof window !== "undefined") {
+      checkScreen();
+      window.addEventListener("resize", checkScreen);
+      return () => window.removeEventListener("resize", checkScreen);
+    }
+  }, []);
+
   return (
     <SectionWrapper idName="project">
-      <>
-        <motion.div variants={textVariant()}>
-          <p className={styles.sectionSubText}>My Work</p>
-          <h2 className={styles.sectionHeadText}>Projects</h2>
-        </motion.div>
+      <div className="w-full">
+        {/* Conditional animation for heading */}
+        {isMobile ? (
+          <>
+            <p className={styles.sectionSubText}>My Work</p>
+            <h2 className={styles.sectionHeadText}>Projects</h2>
+          </>
+        ) : (
+          <motion.div variants={textVariant()}>
+            <p className={styles.sectionSubText}>My Work</p>
+            <h2 className={styles.sectionHeadText}>Projects</h2>
+          </motion.div>
+        )}
 
+        {/* Conditional animation for description */}
         <div className="w-full flex">
-          <motion.p
-            variants={fadeIn("", "", 0.1, 1)}
-            className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px] text-justify"
-          >
-            Following projects showcases my skills and experience through
-            real-world examples of my work. Each project is briefly described
-            with links to code repositories and live demos in it. It reflects my
-            ability to solve complex problems, work with different technologies,
-            and manage projects effectively.
-          </motion.p>
+          {isMobile ? (
+            <p className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px] text-justify">
+              Following projects showcases my skills and experience through
+              real-world examples of my work. Each project is briefly described
+              with links to code repositories and live demos in it. It reflects my
+              ability to solve complex problems, work with different technologies,
+              and manage projects effectively.
+            </p>
+          ) : (
+            <motion.p
+              variants={fadeIn("", "", 0.1, 1)}
+              className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px] text-justify"
+            >
+              Following projects showcases my skills and experience through
+              real-world examples of my work. Each project is briefly described
+              with links to code repositories and live demos in it. It reflects my
+              ability to solve complex problems, work with different technologies,
+              and manage projects effectively.
+            </motion.p>
+          )}
         </div>
 
+        {/* Project Cards */}
         <div className="mt-20 flex flex-wrap gap-7 text-justify">
           {PROJECTS.map((project, i) => (
             <ProjectCard key={`project-${i}`} index={i} {...project} />
           ))}
         </div>
-      </>
+      </div>
     </SectionWrapper>
   );
 };
