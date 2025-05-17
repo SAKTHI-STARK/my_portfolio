@@ -27,7 +27,6 @@ export const Navbar = ({ hide }: NavbarProps) => {
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -51,40 +50,39 @@ export const Navbar = ({ hide }: NavbarProps) => {
         >
           <img src={logo} alt="Logo" className="w-9 h-9 object-contain" />
           <p className="text-white text-[18px] font-bold cursor-pointer flex">
-            Sakthivel&nbsp;<span className="sm:block hidden">| Developer&nbsp;</span>
+            Sakthivel&nbsp;
+            <span className="md:block hidden">| Developer&nbsp;</span>
           </p>
         </Link>
 
-        {/* Nav Links (Desktop) */}
-        <ul className="list-none hidden sm:flex flex-row gap-10">
+        {/* Nav Links (Desktop only, hidden below md) */}
+        <ul className="list-none hidden md:flex flex-row gap-10">
           {NAV_LINKS.map((link) => (
-  <li
-  key={link.id}
-  className={cn(
-    active === link.title ? "text-white" : "text-secondary",
-    "relative group hover:text-white text-[18px] font-medium cursor-pointer"
-  )}
-  onClick={() => !link.link && setActive(link.title)}
->
-  {link.link ? (
-    <a href={link.link} target="_blank" rel="noreferrer noopener">
-      {link.title}
-    </a>
-  ) : (
-    <a href={`#${link.id}`}>{link.title}</a>
-  )}
-  <span
-    className="absolute left-0 bottom-0 h-[2px] bg-cyan-400 w-full origin-center scale-x-0 transition-transform duration-300 group-hover:scale-x-100"
-    style={{ transformOrigin: 'center' }}
-  />
-</li>
-
-
+            <li
+              key={link.id}
+              className={cn(
+                active === link.title ? "text-white" : "text-secondary",
+                "relative group hover:text-white text-[18px] font-medium cursor-pointer"
+              )}
+              onClick={() => !link.link && setActive(link.title)}
+            >
+              {link.link ? (
+                <a href={link.link} target="_blank" rel="noreferrer noopener">
+                  {link.title}
+                </a>
+              ) : (
+                <a href={`#${link.id}`}>{link.title}</a>
+              )}
+              <span
+                className="absolute left-0 bottom-0 h-[2px] bg-cyan-400 w-full origin-center scale-x-0 transition-transform duration-300 group-hover:scale-x-100"
+                style={{ transformOrigin: "center" }}
+              />
+            </li>
           ))}
         </ul>
 
-        {/* Hamburger Menu (Mobile) */}
-        <div className="sm:hidden flex flex-1 justify-end items-center">
+        {/* Hamburger Menu (Mobile & Tablet) */}
+        <div className="md:hidden flex flex-1 justify-end items-center">
           <img
             src={toggle ? close : menu}
             alt="Menu"
@@ -98,7 +96,6 @@ export const Navbar = ({ hide }: NavbarProps) => {
               "p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl"
             )}
           >
-            {/* Nav Links (Mobile) */}
             <ul className="list-none flex justify-end items-start flex-col gap-4">
               {NAV_LINKS.map((link) => (
                 <li

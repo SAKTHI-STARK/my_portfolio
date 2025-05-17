@@ -12,19 +12,32 @@ const Footer = () => {
         "w-full py-8 bg-primary border-t border-t-secondary/5"
       )}
     >
-
-      <div className="w-full flex items-center justify-between max-w-7xl mx-auto " id="contact">
-        <h2 className={cn(styles.sectionHeadText, "text-left")}>
+      <div
+        className="w-full flex flex-col md:flex-row items-center md:items-center justify-center md:justify-between gap-6 max-w-7xl mx-auto"
+        id="contact"
+      >
+        {/* Contact Heading */}
+        <h2
+          className={cn(
+            styles.sectionHeadText,
+            "text-center md:text-left"
+          )}
+        >
           Contact Me
         </h2>
-        <div className="flex items-center gap-6">
+
+        {/* Button + Socials Container */}
+        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+          {/* Connect Button */}
           <a
             href="mailto:sakthi492003@gmail.com"
             className="bg-transparent text-white px-6 py-2 rounded-full font-poppins font-semibold border-2 border-cyan-400 transition-colors hover:border-purple-500 hover:bg-purple-500/20"
           >
             Let's Connect
           </a>
-          <ul className="list-none flex flex-row  gap-6">
+
+          {/* Social Icons */}
+          <ul className="list-none flex flex-row gap-4 justify-center">
             {SOCIALS.map((social) => (
               <li
                 key={social.name}
