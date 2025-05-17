@@ -4,8 +4,9 @@ import AnimatedBar from "./canvas/animationbar";
 import { ComputersCanvas } from "./canvas";
 import { styles } from "../styles";
 import { cn } from "../utils/lib";
+import { FaReact, FaDatabase, FaLaptopCode, FaChartLine, FaRobot, FaPython} from "react-icons/fa";
 
-
+const icons = [FaReact, FaPython, FaDatabase, FaLaptopCode, FaChartLine, FaRobot];
 // Animated phrases
 const phrases = [
   "AI Model Trainer",
@@ -55,7 +56,7 @@ export const Hero = () => {
           <h1 className={cn(styles.heroHeadText, "text-white animate-fade-in")}>
             Hi, I'm <span className="text-[#915eff]">Sakthivel</span>
           </h1>
-          <div className="h-[60px] mt-2 sm:pb-4 overflow-hidden relative">
+          <div className="h-[60px] mt-2 sm:pb-4 overflow-hidden relative ml-1">
             <AnimatePresence mode="wait">
               <motion.p
                 key={index}
@@ -76,15 +77,38 @@ export const Hero = () => {
       {!isMobile && <ComputersCanvas />}
 
       {/* Mobile Image */}
-      {isMobile && (
-          <div className="absolute inset-0 flex justify-center items-end pb-10">
-    <img
-      src="src/assets/desktop_img.png"
-      alt="Mobile Illustration"
-      className="w-[100%] h-auto max-h-[100%] object-contain mb-20"
-    />
+   
+
+{isMobile && (
+  <div className="absolute inset-0 flex justify-center items-end pb-20">
+    <motion.div
+      className="relative w-[200px] h-[200px]"
+      animate={{ rotate: 360 }}
+      transition={{ repeat: Infinity, ease: "linear", duration: 10 }}
+    >
+      {icons.map((IconComponent, i) => {
+        const angle = (i * 360) / icons.length;
+        const radius = 80;
+        const x = radius * Math.cos((angle * Math.PI) / 180);
+        const y = radius * Math.sin((angle * Math.PI) / 180);
+        return (
+          <div
+            key={i}
+            style={{
+              position: "absolute",
+              left: `calc(50% + ${x}px)`,
+              top: `calc(50% + ${y}px)`,
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            <IconComponent className="text-[#915eff]" size={28} />
+          </div>
+        );
+      })}
+    </motion.div>
   </div>
-      )}
+)}
+
     </section>
   );
 };
