@@ -80,7 +80,7 @@ export const Hero = () => {
    
 
 {isMobile && (
-  <div className="absolute inset-0 flex justify-center items-end pb-20">
+  <div className="absolute inset-0 flex justify-center items-end pb-20 mb-16">
     <motion.div
       className="relative w-[200px] h-[200px]"
       animate={{ rotate: 360 }}
