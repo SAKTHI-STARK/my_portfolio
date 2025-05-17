@@ -79,14 +79,7 @@ export const SERVICES = [
 
 // Technologies
 export const TECHNOLOGIES = [
-  {
-    name: "python",
-    icon: python,
-  },
-  {
-    name: "HTML 5",
-    icon: html,
-  },
+ 
   {
     name: "CSS 3",
     icon: css,
@@ -107,7 +100,14 @@ export const TECHNOLOGIES = [
     name: "Tailwind CSS",
     icon: tailwind,
   },
-
+ {
+    name: "python",
+    icon: python,
+  },
+  {
+    name: "HTML 5",
+    icon: html,
+  },
   {
     name: "Three JS",
     icon: threejs,
